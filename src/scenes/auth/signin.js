@@ -1,8 +1,8 @@
-import { Field, Formik } from "formik";
+import { Field, Formik, Form } from "formik";
 import React from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import validator from "validator";
 
 import { setUser } from "../../redux/auth/actions";
@@ -35,7 +35,7 @@ const SignIn = () => {
         }}>
         {({ values, errors, isSubmitting, handleChange, handleSubmit }) => {
           return (
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
               <div className="mb-[25px]">
                 <div className="flex flex-col-reverse">
                   <Field
@@ -73,7 +73,7 @@ const SignIn = () => {
                 <p className="text-[12px] text-[#FD3131]">{errors.password}</p>
               </div>
               {/* SignIn Button */}
-              <div className="flex gap-3">
+              <div className="flex flex-col gap-3">
                 <LoadingButton
                   className="font-[Helvetica] w-[220px] bg-[#007bff] hover:bg-[#0069d9] text-[#fff] rounded-[30px] m-auto block text-[16px] p-[8px] min-h-[42px] "
                   loading={isSubmitting}
@@ -81,14 +81,14 @@ const SignIn = () => {
                   color="primary">
                   Signin
                 </LoadingButton>
-                <LoadingButton
-                  className="font-[Helvetica] w-[220px] bg-[#009dff] hover:bg-[#0069d9] text-[#fff] rounded-[30px] m-auto block text-[16px] p-[8px] min-h-[42px] "
-                  onClick={() => (window.location.href = "/auth/signup")}
-                  color="primary">
-                  Signup
-                </LoadingButton>
+                <div className="flex justify-center align-middle font-[Helvetica] m-auto p-[8px] min-h-[42px] " to="/auth/signup" color="primary">
+                  <span className="mr-1">Pas encore de compte ?</span>
+                  <Link to="/auth/signup" className="text-[#007bff]">
+                    Inscrivez-vous ici.
+                  </Link>
+                </div>
               </div>
-            </form>
+            </Form>
           );
         }}
       </Formik>

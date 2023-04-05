@@ -21,7 +21,6 @@ import api from "./services/api";
 import "./index.css";
 import Home from "./scenes/home";
 
-
 const App = () => {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
@@ -54,13 +53,13 @@ const App = () => {
             <main className="flex-1 overflow-y-scroll">
               <Switch>
                 <Route path="/auth" component={Auth} />
-                <RestrictedRoute path="/user" component={User} />
+                <Route path="/user" component={User} />
 
-                <RestrictedRoute path="/activity" component={Activity} />
+                <Route path="/activity" component={Activity} />
 
-                <RestrictedRoute path="/account" component={Account} />
-                <RestrictedRoute path="/project" component={Project} />
-                <RestrictedRoute path="/" component={Home} />
+                <Route path="/account" component={Account} />
+                <Route path="/project" component={Project} />
+                <Route path="/" component={Home} />
               </Switch>
             </main>
           </div>

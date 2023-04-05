@@ -1,4 +1,4 @@
-import { Field, Formik } from "formik";
+import { Field, Formik, Form } from "formik";
 import React from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,7 +35,7 @@ const Signup = () => {
         }}>
         {({ values, errors, isSubmitting, handleChange, handleSubmit }) => {
           return (
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
               <div className="mb-[25px]">
                 <div className="flex flex-col-reverse">
                   <Field
@@ -98,7 +98,7 @@ const Signup = () => {
                 color="primary">
                 Signup
               </LoadingButton>
-            </form>
+            </Form>
           );
         }}
       </Formik>
